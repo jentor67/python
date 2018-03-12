@@ -42,6 +42,44 @@ def ISBN10():
             Number = "A"
             
     
+def USBank():
+    print("Calculating US Bank account number Check digit:")
+    Number = "A"
+    while ( Number.isdigit() == False ) :
+        Number = selectVersion("Input Account Number: ")
+        if( Number.isdigit() == True and len(Number) <= 12 ):
+            # We will start from the left and use the weight 7, 5, 3, 2
+            # Pad the account number with 0 for a length of 12
+            Number = format(Number, "0>12s")
+            print("The account number used will be "+str(Number))
+            i = 0
+            weights = "753275327532"
+            sumProduct = 0
+            while( i < 12 ):
+                product=int(weights[i])*int(Number[i])
+                # this will give us values from 0 to 63
+                # sum the digits of the product
+
+                if( product > 9 ):
+                    # The product has 2 digits 
+                    sumProduct = sumProduct + int(str(product)[0]) + int(str(product)[1])
+                else: 
+                    # The product has 1 digit
+                    sumProduct = sumProduct + product  
+
+                i = i + 1
+            checkDigit = 10 - ( sumProduct % 10)   
+            print(" ")
+            print("The Check Digit is "+str(checkDigit))
+            print(" ")
+        else:
+            print(" ")
+            if( Number.isdigit() == True ): 
+                print("***WARNING*** Input contains more than 12 digits, please try again.")
+            else:
+                print("***WARNING*** Input is not all digits, please try again.")
+            Number = "A"
+
 
 def UPCBarcode():
     print("Calculating UPC barcode check digit:")
@@ -95,6 +133,8 @@ def doSelection(n):
         UPCBarcode()
     elif ( n == 2 ):
         ISBN10()
+    elif ( n == 3 ):
+        USBank()
     else:
         print(" ")
         print("***Warning*** Choice '"+str(n)+"' does not exit, please try again.")
@@ -107,6 +147,7 @@ while choice > 0:
     print("0. End")
     print("1. UPC Barcode")
     print("2. ISBN 10 Barcode")
+    print("3. US Bank check number")
     print(" ")
     choice = selectVersion(question1)
 
