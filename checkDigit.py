@@ -20,18 +20,18 @@ def ISBN10():
     Number = "A"
 
     while( Number.isdigit() == False ):
-        Number = selectVersion("Input ISBN 10 Number: ")
+        Number = selectVersion("Input 9 digit ISBN 10 Number: ")
         if( Number.isdigit() == True and len(Number) == 9 ):
             i = 0
             sumProduct = 0
             while( i < 9 ):
                 theProduct = 10-i
                 sumProduct = sumProduct + int(Number[i])*theProduct
-                print("The digit "+str(Number[i])+" * "+str(theProduct))
                 i = i +1
-            print("The sum Product is "+str(sumProduct)) 
             checkDigit = 11 - sumProduct % 11
+            print(" ")
             print("The Check Digit is "+str(checkDigit))
+            print(" ")
             break
         else:
             print(" ")
@@ -85,7 +85,7 @@ def UPCBarcode():
     print("Calculating UPC barcode check digit:")
     Number = "A"
     while ( Number.isdigit() == False ) :
-        Number = selectVersion("Input UPC Number: ")
+        Number = selectVersion("Input the 11 digit UPC Number: ")
         if( Number.isdigit() == True and len(Number) == 11 ):
             lenNumber = len(Number)
            
@@ -113,8 +113,8 @@ def UPCBarcode():
 
             # subtract 10 from the remainder to get the check digit
             checkDigit = 10 - remainder
+            print(" ")
             print("The checkDigit is "+str(checkDigit))
-
             print(" ")
             break
         else:
