@@ -1,6 +1,6 @@
 import sys
 
-"""checkDigit.py: Determine whether 2 files match."""
+"""checkDigit.py: Determines the check Digit from different methods."""
 """user>python checkDigit.py"""
 
 __author__    = "John Major"
