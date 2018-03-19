@@ -80,6 +80,49 @@ def USBank():
                 print("***WARNING*** Input is not all digits, please try again.")
             Number = "A"
 
+def ISBN13():
+    print("Calculating ISBN 13 barcode check digit:")
+    Number = "A"
+    while ( Number.isdigit() == False ) :
+        Number = selectVersion("Input the 12 digit ISBN 13 Number: ")
+        if( Number.isdigit() == True and len(Number) == 12 ):
+            lenNumber = len(Number)
+           
+            # Add the even number of digits 
+            i = 1
+            evenNumbers=0
+            while( i < lenNumber ):
+                evenNumbers = evenNumbers + int(Number[i])
+                i = i +2
+            evenNumbers = evenNumbers*3
+            
+            # sum odd numbers
+            i = 0
+            oddNumbers=0
+            while( i < lenNumber ):
+                oddNumbers = oddNumbers + int(Number[i])
+                i = i +2
+    
+            # Add the evenNumbers to the Odd Numbers
+            totalSumProduct = evenNumbers + oddNumbers
+
+
+            # find the modulo of the totalSumProduct
+            remainder = totalSumProduct % 10
+
+            # subtract 10 from the remainder to get the check digit
+            checkDigit = 10 - remainder
+            print(" ")
+            print("The checkDigit is "+str(checkDigit))
+            print(" ")
+            break
+        else:
+            print(" ")
+            if( Number.isdigit() == True ): 
+                print("***WARNING*** Input does not contain 12 digits, please try again.")
+            else:
+                print("***WARNING*** Input is not all digits, please try again.")
+            Number = "A"
 
 def UPCBarcode():
     print("Calculating UPC barcode check digit:")
@@ -97,7 +140,7 @@ def UPCBarcode():
                 i = i +2
             oddNumbers = oddNumbers*3
             
-            # sum evan numbers
+            # sum even numbers
             i = 1
             evenNumbers=0
             while( i < lenNumber ):
@@ -134,6 +177,8 @@ def doSelection(n):
     elif ( n == 2 ):
         ISBN10()
     elif ( n == 3 ):
+        ISBN13()
+    elif ( n == 4 ):
         USBank()
     else:
         print(" ")
@@ -147,7 +192,8 @@ while choice > 0:
     print("0. End")
     print("1. UPC Barcode")
     print("2. ISBN 10 Barcode")
-    print("3. US Bank check number")
+    print("3. ISBN 13 Barcode")
+    print("4. US Bank check number")
     print(" ")
     choice = selectVersion(question1)
 
