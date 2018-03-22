@@ -4,10 +4,12 @@ import sys
 """From the consoule  user>python checkDigit.py"""
 
 """From the web:     python checkDigit.py <barcodeNumber> <barcodeList>"""
-"""Return from Wea:  <status>|<checkdigit>|<barcodeList> """
+"""Return from Wea:  <status>|<checkdigit>|ISBN10|ISBN13|USBank|UPC """
+"""Note at the end after the checkDigit it list all the possible options, this is so it """
+"""automatically populates a pull down list on the web site"""
 
 """Web Example   call: python checkdigit.py 12345678901 ISBN10 """
-"""Web Example return: GOOD|2|ISBN10  """ 
+"""Web Example return: GOOD|2|ISBN10|ISBN13|USBank|UPC  """ 
 
 __author__    = "John Major"
 __copyright__ = "Copyright 2018, Jentor"
@@ -191,13 +193,7 @@ isbn10 = {
     'welcomeStatement': 'Calculationg ISBN10',
     'digitLimit': 9, }
 # Barcode types
-barcodeList = [
-    "0",
-    "ISBN10",
-    "ISBN13",
-    "UPC",
-    "USBank"
-    ]
+barcodeList="ISBN10|ISBN13|USBank|UPC"
 
 #  Welcome Statement for each barcode
 welcomeStatementList = [
@@ -243,7 +239,7 @@ if( len(sys.argv) > 2):
     if( str(checkDigit).isdigit() == False ):
         status = "BAD"
     
-    value1 = status+"|"+str(checkDigit)+"|"+sys.argv[2]
+    value1 = status+"|"+str(checkDigit)+"|"+barcodeList
     print(value1)
 else:
 
