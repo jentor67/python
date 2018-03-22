@@ -238,7 +238,8 @@ if( len(sys.argv) > 2):
     status = "GOOD"
     if( str(checkDigit).isdigit() == False ):
         status = "BAD"
-    
+    if( sys.argv[1] == "0" and sys.argv[2] == "0" ):
+        checkDigit = "" 
     value1 = status+"|"+str(checkDigit)+"|"+barcodeList
     print(value1)
 else:
