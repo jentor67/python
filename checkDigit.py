@@ -221,11 +221,11 @@ if( len(sys.argv) > 2):
     if( sys.argv[1].isdigit() == True ):
         checkDigit = ""
         if( sys.argv[2] == 'ISBN10' ):
-            n = 1
-        elif( sys.argv[2] == 'ISBN13' ):
             n = 2
-        elif( sys.argv[2] == 'UPC' ):
+        elif( sys.argv[2] == 'ISBN13' ):
             n = 3
+        elif( sys.argv[2] == 'UPC' ):
+            n = 1
         elif( sys.argv[2] == 'USBank' ):
             n = 4
         else:
